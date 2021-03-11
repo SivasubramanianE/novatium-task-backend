@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json())
 
-require('./routes/user.route')(app);
+require('./app/routes/user.route')(app);
 // require('./routes/forum.route')(app);
 
 mongoConnector.connectToServer(function (err, client) {
@@ -36,6 +36,6 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(4200, () => {
-    console.log("Server is listening on port 4200");
+app.listen(3000, () => {
+    console.log("Server is listening on port 3000");
 });

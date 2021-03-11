@@ -8,4 +8,7 @@ module.exports = function(express) {
      // User login
     express.post('/user/login', user.login);
 
+    //Cartupdate
+    express.post('/user/cart', user.cartUpdate);
+    
 }
