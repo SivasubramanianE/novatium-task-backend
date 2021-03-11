@@ -18,14 +18,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 require('./app/routes/user.route')(app);
-// require('./routes/forum.route')(app);
 
 mongoConnector.connectToServer(function (err, client) {
     if (err) console.log(err);
     let db = mongoConnector.getDb();
     let mongoClient = mongoConnector.getClient();
     app.set("mongoInstance", db);
-    app.set("mongoClient", mongoClient);
   });
   
 // define a simple route
