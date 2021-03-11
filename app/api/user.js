@@ -8,7 +8,7 @@ module.exports= {
             if (err) {
                 res.send('ERROR');
               } else {
-                res.send({success:true,data:"created Successfull"});
+                res.send({success:true});
               }
       });
     },
