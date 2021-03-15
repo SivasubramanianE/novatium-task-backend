@@ -16,7 +16,7 @@ module.exports= {
     login:(req,res)=>{
       db=req.app.get('mongoInstance')
       let userData = req.body;
-      db.collection("user").findOne({ 'email': req.body.email},function(err,result){
+      db.collection("user").findOne({'email': req.body.email},function(err,result){
         if (err) {
           res.send('ERROR');
         } else {
@@ -43,6 +43,24 @@ module.exports= {
               res.send({success:true,data:result});
             }
     });
-  }
+  },
+
+  createOrder:(req,res)=>{
+    db=req.app.get('mongoInstance')
+    var myobj = req.body;
+     db.collection("order").insertOne(myobj, function(err, result) {
+        if (err) {
+            res.send('ERROR');
+          } else {
+            if(result){
+               db.collection("user").updateOne(
+                {'_id':ObjectId(myobj.id)},
+                {$set: {cart: [], dateModifided: new Date()}}
+              );
+            }
+            res.send({success:true});
+          }
+  });
+}
 
 }

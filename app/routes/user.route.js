@@ -10,5 +10,8 @@ module.exports = function(express) {
 
     //Cartupdate
     express.post('/user/cart', user.cartUpdate);
+ 
+     //checkout
+     express.post('/user/checkout', user.createOrder);
     
 }
